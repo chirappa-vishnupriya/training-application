@@ -1,0 +1,12 @@
+{
+  "ids": {
+    "User": 4
+  },
+  "models": {
+    "User": {
+      "1": "{\"firstName\":\"Vishnupriya\",\"role\":\"ADMIN\",\"id\":1}",
+      "2": "{\"id\":2,\"firstName\":\"Vishnupriya1\",\"role\":\"user\"}",
+      "3": "{\"firstName\":\"Vishnupriya\",\"role\":\"user\",\"id\":3}"
+    }
+  }
+}
