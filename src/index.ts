@@ -1,7 +1,7 @@
 import {ApplicationConfig, StarterApplication} from './application';
 
 export * from './application';
-
+require('dotenv').config();
 export async function main(options: ApplicationConfig = {}) {
   const app = new StarterApplication(options);
   await app.boot();
@@ -16,6 +16,7 @@ export async function main(options: ApplicationConfig = {}) {
 
 if (require.main === module) {
   // Run the application
+  require('dotenv').config();
   const config = {
     rest: {
       port: +(process.env.PORT ?? 3000),
@@ -31,7 +32,7 @@ if (require.main === module) {
         setServersFromRequest: true,
       },
       cors: {
-        origin: ['http://localhost:4200','http://localhost:4600'],
+        origin: process.env.CORS_LIST ?? '*',
         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
         preflightContinue: false,
         optionsSuccessStatus: 204,
