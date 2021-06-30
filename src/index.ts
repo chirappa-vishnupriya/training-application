@@ -32,7 +32,7 @@ if (require.main === module) {
         setServersFromRequest: true,
       },
       cors: {
-        origin: process.env.CORS_LIST ?? '*',
+        origin: process.env.ALLOWED_ORIGIN ?? '*',
         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
         preflightContinue: false,
         optionsSuccessStatus: 204,
