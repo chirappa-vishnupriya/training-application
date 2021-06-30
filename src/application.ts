@@ -74,3 +74,6 @@ export class StarterApplication extends BootMixin(
     };
   }
 }
+function corsCheck(corsCheck: any) {
+  throw new Error('Function not implemented.');
+}
