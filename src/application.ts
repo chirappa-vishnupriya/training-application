@@ -4,8 +4,8 @@ import {RepositoryMixin} from '@loopback/repository';
 import {RestApplication} from '@loopback/rest';
 import {ServiceMixin} from '@loopback/service-proxy';
 import path from 'path';
-import {LoggerServiceCongfiguration} from './Configurations/LoggerServiceConfiguration';
-import {SwaggerServiceConfiguration} from './Configurations/SwaggerServiceConfiguration';
+import {LoggerCongfiguration} from './Configurations/LoggerConfiguration';
+import {SwaggerConfiguration} from './Configurations/SwaggerConfiguration';
 import {MySequence} from './sequence';
 export {ApplicationConfig};
 
@@ -19,8 +19,9 @@ export class StarterApplication extends BootMixin(
 
     this.static('/', path.join(__dirname, '../public'));
 
-    SwaggerServiceConfiguration.config(this);
-    LoggerServiceCongfiguration.consoleAppender(this);
+    SwaggerConfiguration.config(this);
+    LoggerCongfiguration.consoleAppender(this);
+    // DataBaseConfiguration.config(this);
 
     this.projectRoot = __dirname;
     this.bootOptions = {

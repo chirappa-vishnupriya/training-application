@@ -3,7 +3,7 @@ import {
   RestExplorerComponent,
 } from '@loopback/rest-explorer';
 import {StarterApplication} from '..';
-export class SwaggerServiceConfiguration {
+export class SwaggerConfiguration {
   static config(ctx: StarterApplication) {
     ctx.configure(RestExplorerBindings.COMPONENT).to({
       path: '/swagger',

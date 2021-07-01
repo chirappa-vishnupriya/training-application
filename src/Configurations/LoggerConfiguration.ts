@@ -8,7 +8,7 @@ import {
 import {format} from 'winston';
 import {StarterApplication} from '../application';
 
-export class LoggerServiceCongfiguration {
+export class LoggerCongfiguration {
   static consoleAppender(ctx: StarterApplication) {
     ctx.configure(LoggingBindings.COMPONENT).to({
       enableFluent: false, // default to true

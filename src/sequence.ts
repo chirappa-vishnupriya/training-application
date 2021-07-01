@@ -1,7 +1,6 @@
 import {inject} from '@loopback/core';
 import {LoggingBindings, WinstonLogger} from '@loopback/logging';
 import {
-  HttpErrors,
   MiddlewareSequence,
   Reject,
   RequestContext,
@@ -18,9 +17,9 @@ export class MySequence extends MiddlewareSequence {
       ` ${context.request.headers.referer} ${context.request.headers['user-agent']}  ${context.request.ip}`,
     );
     try {
-      if (process.env.ALLOWED_ORIGIN != context.request.headers.origin) {
-        throw new HttpErrors.InternalServerError('You Are Not Allowed');
-      }
+      // if (process.env.ALLOWED_ORIGIN != context.request.headers.origin) {
+      //   throw new HttpErrors.InternalServerError('You Are Not Allowed');
+      // }
       await super.handle(context);
     } catch (error) {
       console.log(error);
