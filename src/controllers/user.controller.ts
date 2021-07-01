@@ -73,8 +73,6 @@ export class UserController {
     },
   })
   async find(@param.filter(User) filter?: Filter<User>): Promise<User[]> {
-    console.log('-----------------');
-    this.logger.log('info', `greeting `);
     return this.userRepository.find(filter);
   }
 
