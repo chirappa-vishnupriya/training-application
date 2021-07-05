@@ -15,15 +15,16 @@ describe('HomePage', () => {
   });
 
   it('exposes a default home page', async () => {
+    // console.log(await client.get('/').expect(200));
     await client
       .get('/')
       .expect(200)
-      .expect('Content-Type', /text\/html/);
+      .expect('Content-Type', /text\/plain/);
   });
 
   it('exposes self-hosted explorer', async () => {
     await client
-      .get('/explorer/')
+      .get('/swagger/')
       .expect(200)
       .expect('Content-Type', /text\/html/)
       .expect(/<title>LoopBack API Explorer/);

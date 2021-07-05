@@ -12,4 +12,7 @@ create table customer(
   website text,
   address text
 );
+alter table customer add column id SERIAL ;
+alter table customer add CONSTRAINT pk_id primary key (id);
+
 
