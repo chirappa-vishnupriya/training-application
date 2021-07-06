@@ -5,7 +5,7 @@ export async function givenEmptyDatabase() {
   await new CustomerRepository(testdb).deleteAll();
 }
 
-export function givenCustomerData(data?: Partial<Customer> | any) {
+export function givenCustomerData(data?: Partial<Customer>) {
   return Object.assign(
     {
       // id: '1',

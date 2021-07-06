@@ -3,14 +3,16 @@ import {CustomerRepository} from '../../repositories';
 import {testdb} from '../fixtures/datasources/testdb.datasource';
 import {givenCustomerData} from '../helpers/database.helpers';
 import {CustomerController} from './../../controllers/customer.controller';
-const should = require('should');
+var should = require('should');
 describe('Customer Controller (integration)', () => {
   describe('Saving data in customer table', () => {
     // for (let i = 0; i < 10; i++) {
     it('Create Customer.......', async () => {
-      const customer: Customer = givenCustomerData({});
+      const customer: Partial<Customer> | any = givenCustomerData(
+        new Customer({}),
+      );
       const controller = new CustomerController(new CustomerRepository(testdb));
-      controller.create(customer);
+      const details = await controller.create(customer);
     });
     // }
   });

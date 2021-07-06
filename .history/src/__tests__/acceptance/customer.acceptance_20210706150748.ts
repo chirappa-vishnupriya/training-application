@@ -8,7 +8,7 @@ describe('Customer Controller (integration)', () => {
   describe('Saving data in customer table', () => {
     // for (let i = 0; i < 10; i++) {
     it('Create Customer.......', async () => {
-      const customer: Customer = givenCustomerData({});
+      const customer: Partial<Customer> = givenCustomerData({});
       const controller = new CustomerController(new CustomerRepository(testdb));
       controller.create(customer);
     });
