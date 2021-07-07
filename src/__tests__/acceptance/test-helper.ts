@@ -1,17 +1,17 @@
-import {StarterApplication} from '../..';
 import {
+  Client,
   createRestAppClient,
   givenHttpServerConfig,
-  Client,
 } from '@loopback/testlab';
+import {StarterApplication} from '../..';
 
 export async function setupApplication(): Promise<AppWithClient> {
   const restConfig = givenHttpServerConfig({
     // Customize the server configuration here.
     // Empty values (undefined, '') will be ignored by the helper.
     //
-    // host: process.env.HOST,
-    // port: +process.env.PORT,
+    host: process.env.HOST,
+    port: +(process.env.PORT ?? 3000),
   });
 
   const app = new StarterApplication({

@@ -19,11 +19,6 @@ export class MySequence extends MiddlewareSequence {
     ); //context.request.headers.origin
     try {
       const ALLOWED_ORIGIN: any = process.env.ALLOWED_ORIGIN;
-      console.log(context.request.headers);
-      this.logger.info(
-        `origin url print.....................${context.request.headers.origin}  ,   ${ALLOWED_ORIGIN}`,
-      );
-      console.log(ALLOWED_ORIGIN.includes(context.request.headers.origin));
       if (
         !(
           ALLOWED_ORIGIN?.includes(context.request.headers.origin) ||

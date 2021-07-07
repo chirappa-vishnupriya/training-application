@@ -2,12 +2,14 @@ import {Client, expect} from '@loopback/testlab';
 import {StarterApplication} from '../..';
 import {setupApplication} from './test-helper';
 
-describe('PingController..................', () => {
+describe('PingController', () => {
   let app: StarterApplication;
   let client: Client;
 
   before('setupApplication', async () => {
     ({app, client} = await setupApplication());
+    const url = app.restServer.url;
+    console.log(`Server is running at ${url}`);
   });
 
   after(async () => {
