@@ -1,6 +1,7 @@
-import {Entity, model, property} from '@loopback/repository';
+import {belongsTo, Entity, model, property} from '@loopback/repository';
+import {User, UserWithRelations} from './user.model';
 
-@model({settings: {strict: false}})
+@model({settings: {strict: true}})
 export class Customer extends Entity {
   @property({
     type: 'number',
@@ -26,6 +27,15 @@ export class Customer extends Entity {
   })
   address?: string;
 
+  // @property({
+  //   type: 'number',
+  //   name: 'user_id',
+  // })
+  // userId: number;
+
+  @belongsTo(() => User, {keyFrom: 'userId'}, {name: 'user_id'})
+  userId?: number;
+
   constructor(data?: Partial<Customer>) {
     super(data);
   }
@@ -33,6 +43,7 @@ export class Customer extends Entity {
 
 export interface CustomerRelations {
   // describe navigational properties here
+  user?: UserWithRelations;
 }
 
 export type CustomerWithRelations = Customer & CustomerRelations;

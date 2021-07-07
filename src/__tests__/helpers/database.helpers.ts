@@ -1,22 +1,23 @@
-import {Customer} from './../../models/customer.model';
-import {CustomerRepository} from './../../repositories/customer.repository';
-import {testdb} from './../fixtures/datasources/testdb.datasource';
-export async function givenEmptyDatabase() {
-  await new CustomerRepository(testdb).deleteAll();
-}
+// import {UserRepository} from '../../repositories';
+// import {Customer} from './../../models/customer.model';
+// import {CustomerRepository} from './../../repositories/customer.repository';
+// import {testdb} from './../fixtures/datasources/testdb.datasource';
+// export async function givenEmptyDatabase() {
+//   await new CustomerRepository(testdb,UserRepository).deleteAll();
+// }
 
-export function givenCustomerData(data?: Partial<Customer> | any) {
-  return Object.assign(
-    {
-      // id: '1',
-      name: 'CUSTOMER1',
-      website: 'http://sample.com',
-      address: 'Hyderabad',
-    },
-    data,
-  );
-}
+// export function givenCustomerData(data?: Partial<Customer> | any) {
+//   return Object.assign(
+//     {
+//       // id: '1',
+//       name: 'CUSTOMER1',
+//       website: 'http://sample.com',
+//       address: 'Hyderabad',
+//     },
+//     data,
+//   );
+// }
 
-export async function givenCustomer(data?: Partial<Customer>) {
-  return new CustomerRepository(testdb).create(givenCustomerData(data));
-}
+// export async function givenCustomer(data?: Partial<Customer>) {
+//   return new CustomerRepository(testdb).create(givenCustomerData(data));
+// }

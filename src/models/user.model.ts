@@ -1,6 +1,7 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, hasOne, model, property} from '@loopback/repository';
+import {Customer, CustomerWithRelations} from './customer.model';
 
-@model({settings: {strict: false}})
+@model({settings: {strict: true}, name: 'users'})
 export class User extends Entity {
   @property({
     type: 'number',
@@ -12,6 +13,7 @@ export class User extends Entity {
   @property({
     type: 'string',
     required: true,
+    name: 'firstname',
   })
   firstName: string;
 
@@ -26,9 +28,9 @@ export class User extends Entity {
   email?: string;
 
   @property({
-    type: 'number',
+    type: 'string',
   })
-  phone?: number;
+  phone?: string;
 
   @property({
     type: 'string',
@@ -42,13 +44,18 @@ export class User extends Entity {
 
   @property({
     type: 'date',
+    name: 'created_on',
   })
-  createdOn: string;
+  createdOn: Date;
 
   @property({
     type: 'date',
+    name: 'modified_on',
   })
-  modifiedOn: string;
+  modifiedOn: Date;
+
+  @hasOne(() => Customer, {keyTo: 'userId'})
+  customer: Customer;
 
   constructor(data?: Partial<User>) {
     super(data);
@@ -57,6 +64,7 @@ export class User extends Entity {
 
 export interface UserRelations {
   // describe navigational properties here
+  customer?: CustomerWithRelations;
 }
 
 export type UserWithRelations = User & UserRelations;
