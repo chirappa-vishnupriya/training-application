@@ -1,4 +1,4 @@
-import {Entity, hasOne, model, property} from '@loopback/repository';
+import {Entity, hasMany, hasOne, model, property} from '@loopback/repository';
 import {Customer, CustomerWithRelations} from './customer.model';
 
 @model({settings: {strict: true}, name: 'users'})
@@ -56,6 +56,9 @@ export class User extends Entity {
 
   @hasOne(() => Customer, {keyTo: 'userId'})
   customer: Customer;
+
+  @hasMany(() => Customer, {keyTo: 'userId'})
+  customers: Customer[];
 
   constructor(data?: Partial<User>) {
     super(data);

@@ -14,6 +14,7 @@ export class CustomerRepository extends DefaultCrudRepository<
   CustomerRelations
 > {
   public readonly user: BelongsToAccessor<User, typeof Customer.prototype.id>;
+
   constructor(
     @inject('datasources.db') dataSource: DbDataSource,
     @repository.getter('UserRepository')
