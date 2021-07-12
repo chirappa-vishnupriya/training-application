@@ -1,5 +1,5 @@
 import {inject} from '@loopback/core';
-import {LoggingBindings, WinstonLogger} from '@loopback/logging';
+import {WinstonLogger} from '@loopback/logging';
 import {
   HttpErrors,
   MiddlewareSequence,
@@ -9,7 +9,7 @@ import {
 } from '@loopback/rest';
 
 export class MySequence extends MiddlewareSequence {
-  @inject(LoggingBindings.WINSTON_LOGGER)
+  @inject('LOGGER.INJECT')
   private logger: WinstonLogger;
 
   @inject(SequenceActions.REJECT) public reject: Reject;

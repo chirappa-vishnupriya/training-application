@@ -4,9 +4,10 @@ import {RepositoryMixin} from '@loopback/repository';
 import {RestApplication} from '@loopback/rest';
 import {ServiceMixin} from '@loopback/service-proxy';
 import path from 'path';
-import {LoggerCongfiguration} from './Configurations/LoggerConfiguration';
-import {SwaggerConfiguration} from './Configurations/SwaggerConfiguration';
+import {ConsoleLoggerComponent} from './components/console-logger.component';
+import {SwaggerBindingComponent} from './components/swagger-binding.component';
 import {MySequence} from './sequence';
+
 export {ApplicationConfig};
 
 export class StarterApplication extends BootMixin(
@@ -16,12 +17,12 @@ export class StarterApplication extends BootMixin(
     super(options);
 
     this.sequence(MySequence);
-
+    this.component(SwaggerBindingComponent);
+    // this.component(LoggingComponent);
+    this.component(ConsoleLoggerComponent);
     this.static('/', path.join(__dirname, '../public'));
 
-    SwaggerConfiguration.config(this);
-    LoggerCongfiguration.consoleAppender(this);
-    // DataBaseConfiguration.config(this);
+    // LoggerCongfiguration.consoleAppender(this);
 
     this.projectRoot = __dirname;
     this.bootOptions = {
