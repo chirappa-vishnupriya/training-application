@@ -9,10 +9,6 @@ export class SwaggerBindingComponent implements Component {
   constructor(
     @inject(CoreBindings.APPLICATION_INSTANCE) private app: StarterApplication,
   ) {
-    console.log(
-      '**********************Swagger *******************',
-      `http://localhost:${process.env.PORT}/swagger`,
-    );
     app.configure(RestExplorerBindings.COMPONENT).to({
       path: '/swagger',
     });

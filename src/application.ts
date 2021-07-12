@@ -4,7 +4,7 @@ import {RepositoryMixin} from '@loopback/repository';
 import {RestApplication} from '@loopback/rest';
 import {ServiceMixin} from '@loopback/service-proxy';
 import path from 'path';
-import {ConsoleLoggerComponent} from './components/console-logger.component';
+import {LoggerComponent} from './components/logger.component';
 import {SwaggerBindingComponent} from './components/swagger-binding.component';
 import {MySequence} from './sequence';
 
@@ -19,7 +19,7 @@ export class StarterApplication extends BootMixin(
     this.sequence(MySequence);
     this.component(SwaggerBindingComponent);
     // this.component(LoggingComponent);
-    this.component(ConsoleLoggerComponent);
+    this.component(LoggerComponent);
     this.static('/', path.join(__dirname, '../public'));
 
     // LoggerCongfiguration.consoleAppender(this);

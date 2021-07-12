@@ -5,7 +5,12 @@ export class LoggerProvider implements Provider<String> {
   constructor() {}
   value(): ValueOrPromise<any> {
     return winston.createLogger({
-      transports: [new winston.transports.Console()],
+      transports: [
+        new winston.transports.Console(),
+        new winston.transports.File({
+          filename: 'logs/app.log',
+        }),
+      ],
       format: winston.format.combine(
         winston.format.colorize(),
         winston.format.timestamp({

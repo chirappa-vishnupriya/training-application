@@ -15,7 +15,7 @@ export class MySequence extends MiddlewareSequence {
   @inject(SequenceActions.REJECT) public reject: Reject;
   async handle(context: RequestContext) {
     this.logger.info(
-      ` ${context.request.headers.referer} ${context.request.headers['user-agent']}  ${context.request.ip}`,
+      ` ${context.request.headers.origin} ${context.request.headers['user-agent']}  ${context.request.ip}`,
     ); //context.request.headers.origin
     try {
       const ALLOWED_ORIGIN: any = process.env.ALLOWED_ORIGIN;
